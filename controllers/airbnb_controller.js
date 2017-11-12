@@ -89,7 +89,7 @@ router.get('/chart4', function(req, res){
   console.log(" chart4 ::: chart4 ::: Got call ");
   db.listings.findAll({
     attributes: [ 
-                  [db.listings.sequelize.fn('COALESCE', db.listings.sequelize.col('listing.neighbourhood'), db.listings.sequelize.col('listing.neighbourhood_cleansed')),  'neighbourhood'],
+                  [db.listings.sequelize.fn('COALESCE', db.listings.sequelize.col('Listing.neighbourhood'), db.listings.sequelize.col('Listing.neighbourhood_cleansed')),  'neighbourhood'],
                   [db.listings.sequelize.fn('count', 1), 'Count']
                 ],
     //where: {weekof: 18}
