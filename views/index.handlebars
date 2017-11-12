@@ -1,0 +1,152 @@
+<div class="collapse navbar-collapse" id="navbarNav">
+  <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#estimate">Price  &nbsp &nbsp</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#booking">Bookings  &nbsp &nbsp</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#chart"> Data &nbsp &nbsp</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#popular">Popularity &nbsp &nbsp</a>
+      </li>
+  </ul>
+</div>
+
+
+<div class= "container123" width="100%" >
+  <center><h1>San Francisco - BnB</h1></center>
+  <img src="/assets/images/city.jpg" alt="city" width = "100%"/>
+</div>
+ <br><br>    
+
+
+<center> 
+<form class="create-form" id="estimate" action="/location/create" method="POST"
+value={{this.data}}>
+  <center><h1>Find out what you could charge</h1></center><br><br>
+  <div class="form-group">
+      <label>Neighbourhood</label>
+      <select name="Neighbourhood">
+          <option value="Balboa Terrace" selected="selected">Balboa Terrace</option>
+          <option value="Bayview">Bayview</option>
+          <option value="Bernal Heights">Bernal Heights</option>
+          <option value="Cow Hollow">Cow Hollow</option>
+          <option value="Excelsior">Excelsior</option>
+          <option value="Forest Hill">Forest Hill</option>
+          <option value="Glen Park">Glen Park</option>
+          <option value="Inner Richmond">Inner Richmond</option>
+          <option value="Inner Sunset">Inner Sunset</option>
+          <option value="Marina">Marina</option>
+          <option value="Mission">Mission</option>
+          <option value="Mission Bay">Mission Bay</option>
+          <option value="Mission District">Mission District</option>
+          <option value="Noe Valley">Noe Valley</option>
+          <option value="Pacific Heights">Pacific Heights</option>
+          <option value="Portola">Portola</option>
+          <option value="Potrero Hill">Potrero Hill</option>
+          <option value="Presidio Heights">Presidio Heights</option>
+          <option value="Richmond District">Richmond District</option>
+          <option value="Russian Hill">Russian Hill</option>
+          <option value="SoMa">SoMa</option>
+          <option value="South Beach">South Beach</option>
+          <option value="South of Market">South of Market</option>
+          <option value="Sunnyside">Sunnyside</option>
+          <option value="Visitacion Valley">Visitacion Valley</option>
+          <option value="West of Twin Peaks">West of Twin Peaks</option>
+          <option value="West Portal">West Portal</option>
+      </select>    
+      <label>Guests</label>
+      <select name="Guests">
+        	<option value="1"  selected="selected">1 Guests</option>
+        	<option value="2">2 Guests</option>
+        	<option value="3">3 Guests</option>
+        	<option value="4">4 Guests</option>
+        	<option value="5">5 Guests</option>
+        	<option value="6">6 Guests</option>
+        	<option value="7">7 Guests</option>
+        	<option value="8">8 Guests</option>
+        	<option value="9">9 Guests</option>
+        	<option value="10">10 Guests</option>
+        	<option value="11">11 Guests</option>
+        	<option value="12">12 Guests</option>
+        	<option value="12">13 Guests</option>
+        	<option value="15">14 Guests</option>
+        	<option value="15">15 Guests</option>
+      </select>
+      <label>Room Type</label>
+      <select name="RoomType">
+        <option value="Shared room">Shared room</option>
+      	<option value="Entire home/apt">Entire home/apt</option>
+      	<option value="Private room" selected="selected">Private room</option> 
+      </select>
+      <label> Date</label>
+      <input type="date"  id="date" name="Date" >
+      <p><button type="submit">Get Started</button></p>
+  </div>
+</form>
+</center>
+
+<div class="col-xs-12" text class="deliverData">
+		 	{{#each priceData}}
+  			<div class = "col-xs-12 text center">
+    				<center>
+                <pre>Prices in {{this.neighbourhood}} Neighbourhood in week {{this.weekof}} is [Min Price: {{this.Min_price}} Max: {{this.Max_price}} Average: {{this.Avg_price}}]</pre> 
+            </center>
+  			</div>
+			{{/each}}		
+</div>
+
+
+<br><br><br><br><br><br>
+        <div class = "col-xs-12 text center" id="booking">
+          <center> <h1>Bookings Optimizations</h1> </center>
+            <center>
+                <pre> As per the above results,  the ideal price per night that will yield maximum bookings or revenue around average price.</pre> 
+            </center>
+        </div><br><br><br><br><br><br>
+
+<div class="col-xs-12" id="chart">
+    <center> <h1>Animation and visualize the data</h1> </center>
+    <div class="col-xs-4"  class="deliver">
+        <canvas id="chart_div" width="250"   height="250"></canvas>
+            <div id="detail"> This is the price for per day average accamodation bar graph of the different business district. </div>
+    </div>
+    <div class="col-xs-4"  class="deliver">
+        <canvas id="chart_div1" width="250" height="250"></canvas>This is the price for per day minimum accamodation line graph of the different business district.
+    </div>
+    <div class="col-xs-4"  class="deliver">
+        <canvas id="chart_div2" width="250" height="250"></canvas>This animated pie chart demostrate the maximun price area of the different business district.
+    </div>
+</div>
+<br> <br><br><br> <br><br><br>  <br> <br> <br> <br> <br> <br> <br>
+
+
+ <center> <h1>Popularity</h1> </center>
+    <div class="col-xs-6"  class="deliver" id="popular">
+        <canvas id="chart_div4" width="250"   height="250" ></canvas>
+        <div class = "col-xs-12 text center" id="popular">
+            <pre> Mission District is the most popular area as per the data of San Fransisco Airbnb </pre> 
+  <!-- </center> -->
+       </div>
+    </div>
+
+
+<br> <br><br><br> <br><br><br>  <br> <br> <br> <br> <br> <br> <br>
+        <br><br><br><br><br><br> <br><br><br>  <br> <br> <br> <br> <br> <br> <br><br><br><br>
+
+
+<footer>
+  <div>
+   <center><p>Neil Jain &#169 2017</p>
+    <p1> <a href="mailto:neiljain56@gmail.com">neiljain56@gmail.com</a></center></p1>
+  </center> 
+</div>
+</footer>
+  
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+<script src="../assets/javascript/graph.js"></script>
+<script src="../assets/style/style.css"> </script>
