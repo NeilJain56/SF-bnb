@@ -78,7 +78,7 @@ router.get('/chart4', function(req, res){
                   [db.listings.sequelize.fn('count', 1), 'Count']
                 ],
     //where: {weekof: 18}
-     group: ['Llisting.neighbourhood'],
+     group: ['Listing.neighbourhood'],
   }).then(function(calendarData){
       res.json(calendarData);
   });
