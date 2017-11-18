@@ -22,7 +22,6 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         // associations can be defined here
         Calendar.belongsTo(models.Listing, {
-          /*foreignKey: 'listing_id'*/
         });
       }
     }

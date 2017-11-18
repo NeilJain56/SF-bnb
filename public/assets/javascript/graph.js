@@ -109,8 +109,6 @@ $(document).ready(function() {
 
       $.get("/chart4")
         .then(function(data) {
-          console.log(json2array(data, 'neighbourhood'));
-          console.log(json2array(data, 'Count'));
           var mychart = (document).getElementById('chart_div4').getContext('2d');  
           var chart_div = new Chart(mychart, 
           {

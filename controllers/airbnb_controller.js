@@ -17,33 +17,25 @@ router.get('/calendar', function(req, res){
 });
 
 router.get('/weeklycalendar', function(req, res){
-  console.log("Got call WEEKLY CALENDAR");
-  db.summaries.findAll({
+   db.summaries.findAll({
     attributes: [ 'neighbourhood', 'weekof', 'monthof', 'Min_price','Max_price','Avg_price'],
     where: {weekof: 1800}
   }).then(function(calendarData){
-    console.log(calendarData);
-    console.log("Got================================================>>>");
-
     res.render('index.handlebars', {calendarData : calendarData});
   });
 });
 
 router.get('/summaries', function(req, res){
-  console.log("Got call WEEKLY CALENDAR");
-  db.summaries.findAll({
+   db.summaries.findAll({
     attributes: [ 'neighbourhood', 'weekof', 'monthof', 'Min_price','Max_price','Avg_price'],
     where: {weekof: 18}
   }).then(function(calendarData){
-    console.log(calendarData);
-  console.log("Got================================================>>>");
     res.json(calendarData);
   });
 });
 
 router.get('/chart1', function(req, res){
-  console.log(" chart1 ::: chart1 ::: Got call WEEKLY CALENDAR");
-  db.summaries.findAll({
+   db.summaries.findAll({
     attributes: [ 'neighbourhood', 
                   [db.summaries.sequelize.fn('avg', db.summaries.sequelize.col('Summary.Avg_price')), 'Avg_price']
                 ],
@@ -56,26 +48,19 @@ router.get('/chart1', function(req, res){
 
 
 router.get('/chart2', function(req, res){
-  console.log(" chart2 ::: chart2 ::: Got call WEEKLY CALENDAR");
-  db.summaries.findAll({
+    db.summaries.findAll({
     attributes: [ 'neighbourhood', 
                   [db.summaries.sequelize.fn('avg', db.summaries.sequelize.col('Summary.Min_price')), 'Min_price']
                 ],
     //where: {weekof: 18}
      group: ['Summary.neighbourhood'],
   }).then(function(calendarData){
-  //   console.log(calendarData);
-  // console.log(" chart1 Got================================================>>>");
-
-    //res.render('index.handlebars', {calendarData : calendarData});
-    //return(calendarData);
-    res.json(calendarData);
+      res.json(calendarData);
   });
 });
 
 router.get('/chart3', function(req, res){
-  console.log(" chart3 ::: chart3 ::: Got call WEEKLY CALENDAR");
-  db.summaries.findAll({
+   db.summaries.findAll({
     attributes: [ 'neighbourhood', 
                   [db.summaries.sequelize.fn('avg', db.summaries.sequelize.col('Summary.Max_price')), 'Max_price']
                 ],
@@ -93,12 +78,9 @@ router.get('/chart4', function(req, res){
                   [db.listings.sequelize.fn('count', 1), 'Count']
                 ],
     //where: {weekof: 18}
-     group: ['Listing.neighbourhood'],
+     group: ['Llisting.neighbourhood'],
   }).then(function(calendarData){
-     console.log(calendarData);
-   console.log(" chart4 Got================================================>>>");
-
-    res.json(calendarData);
+      res.json(calendarData);
   });
 });
 
@@ -121,30 +103,19 @@ router.get('/graph1', function(req, res){
             $gte: 0,
           })
   }).then(function(graphData){
-    console.log(graphData);
     res.render('index.handlebars', {graphData : graphData});
-  
-  });
+    });
 });
 
 
  router.post("/location/create",function(req,res){
-        console.log(req.body.Latitude);
-        console.log(req.body.Longitute);
-        //Neighbourhood
-        console.log(req.body.Neighbourhood);
-        console.log(req.body.Date);
-        console.log(req.body.Guests);
-        console.log(req.body.RoomType);
-
         var x = 10;
         var y = 10;
         var qDate = new Date();
         if (req.body.Date && req.body.Date.length) {
               qDate = req.body.Date;
         }
-        console.log(qDate);
-
+        
         db.summaries.findAll({
           attributes: [ 'neighbourhood', 'weekof', 'monthof', 'Min_price','Max_price','Avg_price'],
           where: { neighbourhood:  req.body.Neighbourhood ,
@@ -153,7 +124,6 @@ router.get('/graph1', function(req, res){
                   weekof: db.listings.sequelize.fn('week', qDate)
                         }
           }).then(function(priceData){
-            console.log(priceData);
             if (priceData && priceData.length) {
                 pData = priceData;
             }
@@ -170,13 +140,7 @@ router.get('/graph1', function(req, res){
 
     });
 router.post("/address",function(req,res){
-console.log("================================================");
-console.log(req.body.Address);
-console.log("================================================");
 res.render('index.handlebars', {priceData : ""});
 });
-
-
- 
 
 module.exports = router;

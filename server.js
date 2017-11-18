@@ -7,7 +7,6 @@ var app =express();
 var port = process.env.PORT || 3000;
 
 // requiring our model for syncing
-//var db  = require("./models");
  const   env = require('./config/env.js'),
    db = require('./config/db.js');
 //Serve static content for the app from the "public" directory in the app directory.
